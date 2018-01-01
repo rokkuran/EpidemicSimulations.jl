@@ -1,5 +1,9 @@
 # EpidemicSimulations
 
+Work in progress.
+
+
+## Examples
 Basic SIR based disease spread example on a 250 node Watts–Strogatz random graph.
 
 ![Watts–Strogatz][sim_ws_sir_250]
