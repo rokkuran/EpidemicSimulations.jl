@@ -23,7 +23,7 @@ G = static_scale_free(200, 400, 2.5)
 
 ## SIS Barabási-Albert
 ```julia
-G = barabasi_albert(n_nodes, 1)
+G = barabasi_albert(200, 1)
 ```
 ![static_scale_free](docs/examples/sis_barabasi_albert.gif " ")
 
