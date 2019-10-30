@@ -5,7 +5,7 @@ SIR <: AbstractModel
 
 here are some words...
 """
-mutable struct SIR <: AbstractModel
+mutable struct SIS <: AbstractModel
     G::AbstractGraph
     n_steps::Int
     state_types::AbstractArray{Symbol}
@@ -13,10 +13,10 @@ mutable struct SIR <: AbstractModel
     parameters::Dict{Symbol, Number}
 end
 
-SIR() = SIR(SimpleGraph(), 50, Symbol[], Dict{Symbol, BitArray{2}}(), Dict{Symbol, Number}())
+SIS() = SIS(SimpleGraph(), 50, Symbol[], Dict{Symbol, BitArray{2}}(), Dict{Symbol, Number}())
 
 
-function initialise!(m::SIR, G::AbstractGraph, n_steps::Int)
+function initialise!(m::SIS, G::AbstractGraph, n_steps::Int)
     
     m.G = G
     m.n_steps = n_steps
@@ -24,7 +24,7 @@ function initialise!(m::SIR, G::AbstractGraph, n_steps::Int)
     m.parameters[:rate_infected] = 0.33
     m.parameters[:rate_recovered] = 0.20
 
-    m.state_types = [:susceptible, :infected, :recovered]
+    m.state_types = [:susceptible, :infected]
 
     m.states = Dict(k => BitArray(zeros(nv(G), n_steps)) for k in m.state_types)
     for i in 1:n_steps
@@ -38,12 +38,12 @@ function initialise!(m::SIR, G::AbstractGraph, n_steps::Int)
 end
 
 
-function update!(m::SIR, node::Int, n_step::Int)
+function update!(m::SIS, node::Int, n_step::Int)
 
     if node_state(m, :infected, node, n_step - 1)
-        if rand() <= rate_recovered(m)
+        if rand() <= rate_recovered(m)  # replace with susceptible rate instead
             m.states[:infected][node, n_step] = 0
-            m.states[:recovered][node, n_step] = 1
+            m.states[:susceptible][node, n_step] = 1
         end
     end
     

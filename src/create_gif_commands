@@ -1,6 +1,0 @@
-convert -resize 75% -delay 50 -loop 0 tmp{1..50}.png ../output.gif
-output.gif \( +clone -set delay 500 \) +swap +delete  output_with_pause.gif
-mogrify -gravity South -annotate 0 '%f' -pointsize 32 -fill black  *.png
-
-
-convert -delay 50 -loop 0 tmp{1..20}.png /gifs/simulation.gif
