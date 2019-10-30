@@ -1,4 +1,4 @@
-module EpiSim
+module EpidemicSimulations
 
 using LightGraphs
 using GraphPlot

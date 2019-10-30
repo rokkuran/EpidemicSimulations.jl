@@ -1,4 +1,4 @@
-using EpiSim
+using EpidemicSimulations
 using Test, LightGraphs
 
 

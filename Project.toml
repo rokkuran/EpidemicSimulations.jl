@@ -1,4 +1,4 @@
-name = "EpiSim"
+name = "EpidemicSimulations"
 uuid = "0b75d9b4-37ac-4934-914c-bbf0cf2ac19d"
 authors = ["rokkuran <lachlanbtaylor@gmail.com>"]
 version = "0.1.0"
