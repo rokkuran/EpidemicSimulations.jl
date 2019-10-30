@@ -1,1 +1,1 @@
-convert -delay 50 -loop 0 '@images.txt' out.gif
+convert -delay 50 -loop 0 '@images.txt' scale_free.gif
