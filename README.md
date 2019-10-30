@@ -1,7 +1,7 @@
 # Epidemic Simulations
 Work in progress. Contains basic examples of SIR and SIS models on a given graph.
 
-All of the following simulations are using an infection rate of `0.33` and a recovery rate of `0.20`.
+All of the following simulations are using an infection rate of `0.33` and a recovery rate of `0.20`. The timseries plots have a much high node count of 100k; the graph animations all have 200 nodes.
 
 ## SIR Watts-Strogatz
 ```julia
