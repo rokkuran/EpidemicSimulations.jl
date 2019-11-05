@@ -1,7 +1,9 @@
 
 my_tests = [
     "sir",
-    "sis"
+    "sis",
+    "seir",
+    "sirc",
 ]
 
 for test in my_tests

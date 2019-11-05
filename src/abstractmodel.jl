@@ -1,7 +1,7 @@
 abstract type AbstractModel end
 
 
-rate_infected(m::AbstractModel) = get(m.parameters, :rate_infected, nothing)
+rate_infectious(m::AbstractModel) = get(m.parameters, :rate_infectious, nothing)
 rate_recovered(m::AbstractModel) = get(m.parameters, :rate_recovered, nothing)
 
 
@@ -12,7 +12,7 @@ end
 
 function get_node_state(m::AbstractModel, node::T, n_step::T) where {T <: Int} 
     for state_type in keys(m.states)
-        if node_state(m, state_type, node, n_step)
+        if node_state(m, state_type, node, n_step) >= 1
             return state_type
         end
     end
