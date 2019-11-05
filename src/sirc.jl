@@ -21,6 +21,7 @@ function initialise!(m::SIRC, G::AbstractGraph, n_steps::Int)
     m.G = G
     m.n_steps = n_steps
 
+    # TODO: clarify the following rates
     m.parameters[:rate_infectious] = 0.33
     m.parameters[:rate_carrier] = 0.33
     m.parameters[:rate_infectious_transition] = 0.20
@@ -56,12 +57,14 @@ function update!(m::SIRC, node::Int, n_step::Int)
     
     if node_state(m, :susceptible, node, n_step - 1)
         for neighbour in neighbors(m.G, node)
+
             if node_state(m, :infectious, neighbour, n_step - 1)
                 if rand() <= rate_infectious(m)
                     m.states[:susceptible][node, n_step] = 0
                     m.states[:infectious][node, n_step] = 1
                     break
                 end
+
             elseif node_state(m, :carrier, neighbour, n_step - 1)
                 if rand() <= m.parameters[:rate_carrier]
                     m.states[:susceptible][node, n_step] = 0
@@ -69,6 +72,7 @@ function update!(m::SIRC, node::Int, n_step::Int)
                     break
                 end
             end
+            
         end
     end
 
